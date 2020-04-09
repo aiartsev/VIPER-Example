@@ -8,8 +8,6 @@
 
 import UIKit
 
-protocol TopEntriesListViewProtocol: class {
+protocol TopEntriesListViewControllerProtocol: class {
 	var presenter: TopEntriesListPresenterProtocol? { get set }
-
-	func dispaly(_ viewControllers: [UIViewController])
 }

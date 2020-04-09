@@ -9,7 +9,5 @@
 protocol TopEntriesListPresenterProtocol: class {
 	var router: TopEntriesListRouterProtocol? { get set }
 	var interactor: TopEntriesListInteractorProtocol? { get set }
-	var view: TopEntriesListViewProtocol? { get set }
-
-	func setupViewControllers()
+	var view: TopEntriesListViewControllerProtocol? { get set }
 }

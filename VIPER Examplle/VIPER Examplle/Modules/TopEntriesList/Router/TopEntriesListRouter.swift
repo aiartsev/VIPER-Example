@@ -1,5 +1,5 @@
 //
-//  TopEntriesListRouterProtocol.swift
+//  TopEntriesRouter.swift
 //  VIPER Examplle
 //
 //  Created by Alexandre Iartsev on 09/04/2020.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol TopEntriesListRouterProtocol: class {
-	var presenter: TopEntriesListPresenterProtocol? { get set }
+final class TopEntriesListRouter: TopEntriesListRouterProtocol {
+	weak var presenter: TopEntriesListPresenterProtocol?
 }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
 		window = UIWindow(frame: UIScreen.main.bounds)
-		//TODO: Assign rootViewController from Module's Router
+		window?.rootViewController = TopEntriesListModule().build()
 		window?.makeKeyAndVisible()
 
 		return true

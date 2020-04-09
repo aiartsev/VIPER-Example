@@ -17,7 +17,11 @@
 		1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9AE243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift */; };
 		1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B0243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift */; };
 		1B3FD9B3243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B2243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift */; };
-		1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift */; };
+		1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift */; };
+		1B3FD9B7243FD808002C4FF6 /* TopEntriesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B6243FD808002C4FF6 /* TopEntriesListInteractor.swift */; };
+		1B3FD9B9243FD847002C4FF6 /* TopEntriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B8243FD847002C4FF6 /* TopEntriesListPresenter.swift */; };
+		1B3FD9BB243FD8B9002C4FF6 /* TopEntriesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9BA243FD8B9002C4FF6 /* TopEntriesListRouter.swift */; };
+		1B3FD9BD243FD9BE002C4FF6 /* TopEntriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9BC243FD9BE002C4FF6 /* TopEntriesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +37,11 @@
 		1B3FD9AE243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListInteractorProtocol.swift; sourceTree = "<group>"; };
 		1B3FD9B0243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListPresenterProtocol.swift; sourceTree = "<group>"; };
 		1B3FD9B2243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListRouterProtocol.swift; sourceTree = "<group>"; };
-		1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListViewProtocol.swift; sourceTree = "<group>"; };
+		1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListViewControllerProtocol.swift; sourceTree = "<group>"; };
+		1B3FD9B6243FD808002C4FF6 /* TopEntriesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListInteractor.swift; sourceTree = "<group>"; };
+		1B3FD9B8243FD847002C4FF6 /* TopEntriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListPresenter.swift; sourceTree = "<group>"; };
+		1B3FD9BA243FD8B9002C4FF6 /* TopEntriesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListRouter.swift; sourceTree = "<group>"; };
+		1B3FD9BC243FD9BE002C4FF6 /* TopEntriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				1B3FD9AE243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift */,
+				1B3FD9B6243FD808002C4FF6 /* TopEntriesListInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -110,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1B3FD9B0243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift */,
+				1B3FD9B8243FD847002C4FF6 /* TopEntriesListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -118,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				1B3FD9B2243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift */,
+				1B3FD9BA243FD8B9002C4FF6 /* TopEntriesListRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -125,7 +136,8 @@
 		1B3FD9AD243FD614002C4FF6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift */,
+				1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift */,
+				1B3FD9BC243FD9BE002C4FF6 /* TopEntriesListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,13 +214,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B3FD9A9243FD5B8002C4FF6 /* TopEntriesListModule.swift in Sources */,
+				1B3FD9BB243FD8B9002C4FF6 /* TopEntriesListRouter.swift in Sources */,
+				1B3FD9B9243FD847002C4FF6 /* TopEntriesListPresenter.swift in Sources */,
 				1B3FD997243FB742002C4FF6 /* ViewController.swift in Sources */,
-				1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift in Sources */,
+				1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift in Sources */,
 				1B3FD993243FB742002C4FF6 /* AppDelegate.swift in Sources */,
 				1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */,
+				1B3FD9B7243FD808002C4FF6 /* TopEntriesListInteractor.swift in Sources */,
 				1B3FD995243FB742002C4FF6 /* SceneDelegate.swift in Sources */,
 				1B3FD9B3243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift in Sources */,
 				1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */,
+				1B3FD9BD243FD9BE002C4FF6 /* TopEntriesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
