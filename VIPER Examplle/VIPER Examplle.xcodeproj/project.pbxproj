@@ -56,6 +56,7 @@
 		1B3FD991243FB742002C4FF6 /* VIPER Examplle */ = {
 			isa = PBXGroup;
 			children = (
+				1B3FD9A6243FD459002C4FF6 /* Modules */,
 				1B3FD992243FB742002C4FF6 /* AppDelegate.swift */,
 				1B3FD994243FB742002C4FF6 /* SceneDelegate.swift */,
 				1B3FD996243FB742002C4FF6 /* ViewController.swift */,
@@ -65,6 +66,21 @@
 				1B3FD9A0243FB745002C4FF6 /* Info.plist */,
 			);
 			path = "VIPER Examplle";
+			sourceTree = "<group>";
+		};
+		1B3FD9A6243FD459002C4FF6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9A7243FD4A2002C4FF6 /* TopEntriesList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1B3FD9A7243FD4A2002C4FF6 /* TopEntriesList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TopEntriesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
