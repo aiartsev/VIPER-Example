@@ -10,4 +10,12 @@ protocol TopEntriesListPresenterProtocol: class {
 	var router: TopEntriesListRouterProtocol? { get set }
 	var interactor: TopEntriesListInteractorProtocol? { get set }
 	var view: TopEntriesListViewControllerProtocol? { get set }
+
+	var state: TopEntriesListViewState { get }
+}
+
+enum TopEntriesListViewState {
+	case loading
+	case error(message: String)
+	case entries(data: [RedditEntry])
 }

@@ -22,6 +22,10 @@
 		1B3FD9B9243FD847002C4FF6 /* TopEntriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B8243FD847002C4FF6 /* TopEntriesListPresenter.swift */; };
 		1B3FD9BB243FD8B9002C4FF6 /* TopEntriesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9BA243FD8B9002C4FF6 /* TopEntriesListRouter.swift */; };
 		1B3FD9BD243FD9BE002C4FF6 /* TopEntriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9BC243FD9BE002C4FF6 /* TopEntriesListViewController.swift */; };
+		1B3FD9C1243FDE7C002C4FF6 /* RedditPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9C0243FDE7C002C4FF6 /* RedditPost.swift */; };
+		1B3FD9C3243FDE86002C4FF6 /* RedditPostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9C2243FDE86002C4FF6 /* RedditPostService.swift */; };
+		1B3FD9C7243FE16B002C4FF6 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9C6243FE16B002C4FF6 /* ActivityCell.swift */; };
+		1B3FD9CC243FE276002C4FF6 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9CB243FE276002C4FF6 /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		1B3FD9B8243FD847002C4FF6 /* TopEntriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListPresenter.swift; sourceTree = "<group>"; };
 		1B3FD9BA243FD8B9002C4FF6 /* TopEntriesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListRouter.swift; sourceTree = "<group>"; };
 		1B3FD9BC243FD9BE002C4FF6 /* TopEntriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListViewController.swift; sourceTree = "<group>"; };
+		1B3FD9C0243FDE7C002C4FF6 /* RedditPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPost.swift; sourceTree = "<group>"; };
+		1B3FD9C2243FDE86002C4FF6 /* RedditPostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPostService.swift; sourceTree = "<group>"; };
+		1B3FD9C6243FE16B002C4FF6 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		1B3FD9CB243FE276002C4FF6 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +82,9 @@
 		1B3FD991243FB742002C4FF6 /* VIPER Examplle */ = {
 			isa = PBXGroup;
 			children = (
+				1B3FD9C4243FE14E002C4FF6 /* Common */,
 				1B3FD9A6243FD459002C4FF6 /* Modules */,
+				1B3FD9BE243FDE19002C4FF6 /* Model */,
 				1B3FD992243FB742002C4FF6 /* AppDelegate.swift */,
 				1B3FD994243FB742002C4FF6 /* SceneDelegate.swift */,
 				1B3FD996243FB742002C4FF6 /* ViewController.swift */,
@@ -140,6 +150,48 @@
 				1B3FD9BC243FD9BE002C4FF6 /* TopEntriesListViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1B3FD9BE243FDE19002C4FF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9BF243FDE6A002C4FF6 /* RedditPost */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B3FD9BF243FDE6A002C4FF6 /* RedditPost */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9C0243FDE7C002C4FF6 /* RedditPost.swift */,
+				1B3FD9C2243FDE86002C4FF6 /* RedditPostService.swift */,
+			);
+			path = RedditPost;
+			sourceTree = "<group>";
+		};
+		1B3FD9C4243FE14E002C4FF6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9CA243FE26A002C4FF6 /* Extensions */,
+				1B3FD9C5243FE154002C4FF6 /* Cells */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1B3FD9C5243FE154002C4FF6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9C6243FE16B002C4FF6 /* ActivityCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1B3FD9CA243FE26A002C4FF6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9CB243FE276002C4FF6 /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,11 +272,15 @@
 				1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift in Sources */,
 				1B3FD993243FB742002C4FF6 /* AppDelegate.swift in Sources */,
 				1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */,
+				1B3FD9C7243FE16B002C4FF6 /* ActivityCell.swift in Sources */,
 				1B3FD9B7243FD808002C4FF6 /* TopEntriesListInteractor.swift in Sources */,
 				1B3FD995243FB742002C4FF6 /* SceneDelegate.swift in Sources */,
 				1B3FD9B3243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift in Sources */,
 				1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */,
+				1B3FD9C1243FDE7C002C4FF6 /* RedditPost.swift in Sources */,
 				1B3FD9BD243FD9BE002C4FF6 /* TopEntriesListViewController.swift in Sources */,
+				1B3FD9C3243FDE86002C4FF6 /* RedditPostService.swift in Sources */,
+				1B3FD9CC243FE276002C4FF6 /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

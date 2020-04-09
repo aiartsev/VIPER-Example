@@ -9,11 +9,13 @@
 final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 	var router: TopEntriesListRouterProtocol?
 	var interactor: TopEntriesListInteractorProtocol?
+	var state: TopEntriesListViewState
 	weak var view: TopEntriesListViewControllerProtocol?
 
 	init(router: TopEntriesListRouterProtocol, interactor: TopEntriesListInteractorProtocol) {
 		self.router = router
 		self.interactor = interactor
+		state = .loading
 
 		router.presenter = self
 		interactor.presenter = self

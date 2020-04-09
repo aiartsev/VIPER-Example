@@ -10,4 +10,6 @@ import UIKit
 
 protocol TopEntriesListViewControllerProtocol: class {
 	var presenter: TopEntriesListPresenterProtocol? { get set }
+
+	func reload()
 }
