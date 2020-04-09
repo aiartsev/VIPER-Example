@@ -13,6 +13,11 @@
 		1B3FD99A243FB742002C4FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3FD998243FB742002C4FF6 /* Main.storyboard */; };
 		1B3FD99C243FB745002C4FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3FD99B243FB745002C4FF6 /* Assets.xcassets */; };
 		1B3FD99F243FB745002C4FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3FD99D243FB745002C4FF6 /* LaunchScreen.storyboard */; };
+		1B3FD9A9243FD5B8002C4FF6 /* TopEntriesListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9A8243FD5B8002C4FF6 /* TopEntriesListModule.swift */; };
+		1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9AE243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift */; };
+		1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B0243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift */; };
+		1B3FD9B3243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B2243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift */; };
+		1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		1B3FD99B243FB745002C4FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3FD99E243FB745002C4FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B3FD9A0243FB745002C4FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B3FD9A8243FD5B8002C4FF6 /* TopEntriesListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListModule.swift; sourceTree = "<group>"; };
+		1B3FD9AE243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListInteractorProtocol.swift; sourceTree = "<group>"; };
+		1B3FD9B0243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListPresenterProtocol.swift; sourceTree = "<group>"; };
+		1B3FD9B2243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListRouterProtocol.swift; sourceTree = "<group>"; };
+		1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopEntriesListViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +89,45 @@
 		1B3FD9A7243FD4A2002C4FF6 /* TopEntriesList */ = {
 			isa = PBXGroup;
 			children = (
+				1B3FD9AA243FD604002C4FF6 /* Interactor */,
+				1B3FD9AB243FD60B002C4FF6 /* Presenter */,
+				1B3FD9AC243FD610002C4FF6 /* Router */,
+				1B3FD9AD243FD614002C4FF6 /* View */,
+				1B3FD9A8243FD5B8002C4FF6 /* TopEntriesListModule.swift */,
 			);
 			path = TopEntriesList;
+			sourceTree = "<group>";
+		};
+		1B3FD9AA243FD604002C4FF6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9AE243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1B3FD9AB243FD60B002C4FF6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9B0243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1B3FD9AC243FD610002C4FF6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9B2243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1B3FD9AD243FD614002C4FF6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FD9B4243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +201,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B3FD9A9243FD5B8002C4FF6 /* TopEntriesListModule.swift in Sources */,
 				1B3FD997243FB742002C4FF6 /* ViewController.swift in Sources */,
+				1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewProtocol.swift in Sources */,
 				1B3FD993243FB742002C4FF6 /* AppDelegate.swift in Sources */,
+				1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */,
 				1B3FD995243FB742002C4FF6 /* SceneDelegate.swift in Sources */,
+				1B3FD9B3243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift in Sources */,
+				1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
