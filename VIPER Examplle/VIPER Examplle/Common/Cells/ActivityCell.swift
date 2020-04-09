@@ -13,12 +13,7 @@ final class ActivityCell: UITableViewCell {
 		static let Identifier = "ActivityCell"
 	}
 
-	private let activityIndicator: UIActivityIndicatorView = {
-		let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-		view.translatesAutoresizingMaskIntoConstraints = false
-
-		return view
-	}()
+	private let activityIndicator: UIActivityIndicatorView = ActivityView()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,7 +30,7 @@ final class ActivityCell: UITableViewCell {
 	private func layout() {
 		contentView.addSubview(activityIndicator)
 
-		NSLayoutConstraint.activate(constraintsAligning(subView: activityIndicator,
+		NSLayoutConstraint.activate(contentView.constraintsAligning(subView: activityIndicator,
 														vertically: .center(offset: 0),
 														horizontally: .center(offset: 0)))
 	}

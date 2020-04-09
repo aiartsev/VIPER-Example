@@ -16,6 +16,6 @@ protocol TopEntriesListPresenterProtocol: class {
 
 enum TopEntriesListViewState {
 	case loading
-	case error(message: String)
+	case error(message: String?)
 	case entries(data: [RedditEntry])
 }

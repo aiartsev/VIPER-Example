@@ -19,6 +19,7 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		configure()
 
 		tableView.register(ActivityCell.self, forCellReuseIdentifier: ActivityCell.Constants.Identifier)
+		tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.Constants.Identifier)
 	}
 
 	required init?(coder: NSCoder) {
@@ -37,6 +38,8 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		view.backgroundColor = .white
 
 		tableView.showsVerticalScrollIndicator = false
+		tableView.separatorStyle = .none
+		tableView.tableFooterView = UIView()
 	}
 }
 
@@ -69,6 +72,8 @@ extension TopEntriesListViewController {
 		switch state {
 		case .loading:
 			return configureLoadingCell(tableView: tableView, indexPath: indexPath)
+		case .error(let message):
+			return configureErrorCel(tableView: tableView, indexPath: indexPath, message: message)
 		default:
 			//TODO: Add
 			return UITableViewCell()
@@ -77,5 +82,26 @@ extension TopEntriesListViewController {
 
 	private func configureLoadingCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
 		return tableView.dequeueReusableCell(withIdentifier: ActivityCell.Constants.Identifier, for: indexPath)
+	}
+
+	private func configureErrorCel(tableView: UITableView, indexPath: IndexPath, message: String?) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: ErrorCell.Constants.Identifier, for: indexPath)
+
+		if let errorCell = cell as? ErrorCell {
+			errorCell.errorText = message
+		}
+
+		return cell
+	}
+
+	override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+		let state = presenter?.state ?? .loading
+
+		switch state {
+		case .entries:
+			return indexPath
+		default:
+			return nil
+		}
 	}
 }

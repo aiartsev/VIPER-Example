@@ -15,7 +15,7 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 	init(router: TopEntriesListRouterProtocol, interactor: TopEntriesListInteractorProtocol) {
 		self.router = router
 		self.interactor = interactor
-		state = .loading
+		state = .error(message: "I am an error!")
 
 		router.presenter = self
 		interactor.presenter = self
