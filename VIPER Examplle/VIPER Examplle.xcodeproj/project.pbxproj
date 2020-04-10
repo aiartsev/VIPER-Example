@@ -31,6 +31,10 @@
 		1B3FD9D3243FE92B002C4FF6 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9D2243FE92B002C4FF6 /* ErrorCell.swift */; };
 		1B3FD9D624411C4E002C4FF6 /* RedditPostServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9D524411C4E002C4FF6 /* RedditPostServiceProtocol.swift */; };
 		1B3FD9D824411D8F002C4FF6 /* MockRedditPostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9D724411D8F002C4FF6 /* MockRedditPostService.swift */; };
+		1B3FD9DA244126D4002C4FF6 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9D9244126D4002C4FF6 /* EntryCell.swift */; };
+		1B3FD9DC24412815002C4FF6 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9DB24412815002C4FF6 /* ImageView.swift */; };
+		1B3FD9DE244129A9002C4FF6 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9DD244129A9002C4FF6 /* StackView.swift */; };
+		1B3FD9E024412E16002C4FF6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9DF24412E16002C4FF6 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,10 @@
 		1B3FD9D2243FE92B002C4FF6 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
 		1B3FD9D524411C4E002C4FF6 /* RedditPostServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPostServiceProtocol.swift; sourceTree = "<group>"; };
 		1B3FD9D724411D8F002C4FF6 /* MockRedditPostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRedditPostService.swift; sourceTree = "<group>"; };
+		1B3FD9D9244126D4002C4FF6 /* EntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
+		1B3FD9DB24412815002C4FF6 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		1B3FD9DD244129A9002C4FF6 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		1B3FD9DF24412E16002C4FF6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +202,7 @@
 			children = (
 				1B3FD9C6243FE16B002C4FF6 /* ActivityCell.swift */,
 				1B3FD9D2243FE92B002C4FF6 /* ErrorCell.swift */,
+				1B3FD9D9244126D4002C4FF6 /* EntryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -211,6 +220,9 @@
 			children = (
 				1B3FD9CE243FE8AA002C4FF6 /* ActivityView.swift */,
 				1B3FD9D0243FE8F0002C4FF6 /* Label.swift */,
+				1B3FD9DB24412815002C4FF6 /* ImageView.swift */,
+				1B3FD9DD244129A9002C4FF6 /* StackView.swift */,
+				1B3FD9DF24412E16002C4FF6 /* Button.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -304,10 +316,14 @@
 				1B3FD993243FB742002C4FF6 /* AppDelegate.swift in Sources */,
 				1B3FD9D3243FE92B002C4FF6 /* ErrorCell.swift in Sources */,
 				1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */,
+				1B3FD9DA244126D4002C4FF6 /* EntryCell.swift in Sources */,
 				1B3FD9C7243FE16B002C4FF6 /* ActivityCell.swift in Sources */,
 				1B3FD9B7243FD808002C4FF6 /* TopEntriesListInteractor.swift in Sources */,
+				1B3FD9DE244129A9002C4FF6 /* StackView.swift in Sources */,
 				1B3FD9D824411D8F002C4FF6 /* MockRedditPostService.swift in Sources */,
+				1B3FD9DC24412815002C4FF6 /* ImageView.swift in Sources */,
 				1B3FD9CF243FE8AA002C4FF6 /* ActivityView.swift in Sources */,
+				1B3FD9E024412E16002C4FF6 /* Button.swift in Sources */,
 				1B3FD995243FB742002C4FF6 /* SceneDelegate.swift in Sources */,
 				1B3FD9B3243FD693002C4FF6 /* TopEntriesListRouterProtocol.swift in Sources */,
 				1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */,

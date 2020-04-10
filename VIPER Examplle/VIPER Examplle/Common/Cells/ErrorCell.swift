@@ -12,11 +12,11 @@ final class ErrorCell: UITableViewCell {
 	struct Constants {
 		static let Identifier = "ErrorCell"
 		fileprivate static let LabelInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
+		fileprivate static let ErrorFont: UIFont = .systemFont(ofSize: 16.0)
 	}
 
 	private let errorLabel: UILabel = {
-		let view = Label()
-		view.textAlignment = .center
+		let view = Label(font: Constants.ErrorFont, alignment: .center)
 		view.numberOfLines = 0
 
 		return view

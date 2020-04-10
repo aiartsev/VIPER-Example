@@ -27,10 +27,10 @@ class MockRedditPostService: RedditPostService {
 	func getPosts(afterEntry: String?, completion: @escaping (TopListing?, Error?) -> Void) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + postsDelay) {
 			let entries = [
-				EntryWrapper(data: RedditEntry(title: "Title 1", author: "Author 1", created: 0, thumbnail: "", comments: 5, imageAddress: nil)),
-				EntryWrapper(data: RedditEntry(title: "Title 2", author: "Author 2", created: 0, thumbnail: "", comments: 5, imageAddress: nil)),
-				EntryWrapper(data: RedditEntry(title: "Title 3", author: "Author 3", created: 0, thumbnail: "", comments: 5, imageAddress: nil)),
-				EntryWrapper(data: RedditEntry(title: "Title 4", author: "Author 4", created: 0, thumbnail: "", comments: 5, imageAddress: nil))
+				EntryWrapper(data: RedditEntry(title: "Title 1", author: "Author 1", created: 0, thumbnail: nil, comments: 5, imageAddress: nil)),
+				EntryWrapper(data: RedditEntry(title: "Title 2", author: "Author 2", created: 0, thumbnail: nil, comments: 5, imageAddress: nil)),
+				EntryWrapper(data: RedditEntry(title: "Title 3", author: "Author 3", created: 0, thumbnail: nil, comments: 5, imageAddress: nil)),
+				EntryWrapper(data: RedditEntry(title: "Title 4", author: "Author 4", created: 0, thumbnail: nil, comments: 5, imageAddress: nil))
 			]
 			let listing = TopListing(modHash: "", entries: entries, after: nil, before: nil)
 

@@ -12,7 +12,7 @@ struct RedditEntry: Codable {
     let title: String
     let author: String
     let created: Double
-    let thumbnail: String
+    let thumbnail: String?
     let comments: Int
 	let read: Bool = false
 
@@ -23,7 +23,7 @@ struct RedditEntry: Codable {
 
 	private let imageAddress: String?
 
-	init(title: String, author: String, created: Double, thumbnail: String, comments: Int, imageAddress: String?) {
+	init(title: String, author: String, created: Double, thumbnail: String?, comments: Int, imageAddress: String?) {
 		self.title = title
 		self.author = author
 		self.created = created

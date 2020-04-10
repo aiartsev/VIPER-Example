@@ -17,9 +17,6 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		presenter.view = self
 
 		configure()
-
-		tableView.register(ActivityCell.self, forCellReuseIdentifier: ActivityCell.Constants.Identifier)
-		tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.Constants.Identifier)
 	}
 
 	required init?(coder: NSCoder) {
@@ -47,6 +44,10 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		tableView.showsVerticalScrollIndicator = false
 		tableView.separatorStyle = .none
 		tableView.tableFooterView = UIView()
+
+		tableView.register(ActivityCell.self, forCellReuseIdentifier: ActivityCell.Constants.Identifier)
+		tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.Constants.Identifier)
+		tableView.register(EntryCell.self, forCellReuseIdentifier: EntryCell.Constants.Identifier)
 	}
 }
 
@@ -81,9 +82,9 @@ extension TopEntriesListViewController {
 			return configureLoadingCell(tableView: tableView, indexPath: indexPath)
 		case .error(let message):
 			return configureErrorCel(tableView: tableView, indexPath: indexPath, message: message)
-		default:
-			//TODO: Add
-			return UITableViewCell()
+		case .entries(let data):
+			let cellModel = EntryCellModel(entry: data[indexPath.row])
+			return configureEntryCel(tableView: tableView, indexPath: indexPath, model: cellModel)
 		}
 	}
 
@@ -96,6 +97,16 @@ extension TopEntriesListViewController {
 
 		if let errorCell = cell as? ErrorCell {
 			errorCell.errorText = message
+		}
+
+		return cell
+	}
+
+	private func configureEntryCel(tableView: UITableView, indexPath: IndexPath, model: EntryCellModel) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: EntryCell.Constants.Identifier, for: indexPath)
+
+		if let entryCell = cell as? EntryCell {
+			entryCell.model = model
 		}
 
 		return cell

@@ -1,22 +1,21 @@
 //
-//  Label.swift
+//  Button.swift
 //  VIPER Examplle
 //
-//  Created by Alexandre Iartsev on 09/04/2020.
+//  Created by Alexandre Iartsev on 10/04/2020.
 //  Copyright © 2020 Alex Iartsev. All rights reserved.
 //
 
 import UIKit
 
-final class Label: UILabel {
-	init(font: UIFont, alignment: NSTextAlignment = .natural) {
+final class Button: UIButton {
+	init(title: String) {
 		super.init(frame: .zero)
 		translatesAutoresizingMaskIntoConstraints = false
-		self.font = font
-		self.textAlignment = alignment
+		setTitle(title, for: .normal)
 	}
 
-	required init?(coder: NSCoder) {
+	required init(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

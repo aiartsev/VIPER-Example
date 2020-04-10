@@ -22,8 +22,7 @@ final class TopEntriesListInteractor: TopEntriesListInteractorProtocol {
 				return
 			}
 
-			self?.presenter?.setError(message: nil)
-//			self?.presenter?.loadEntries(entries: listing.entries.map { $0.data })
+			self?.presenter?.loadEntries(entries: listing.entries.map { $0.data })
 		}
 	}
 }
