@@ -13,15 +13,31 @@ struct RedditEntry: Codable {
     let author: String
     let created: Double
     let thumbnail: String
-    let image: String?
     let comments: Int
+	let read: Bool = false
+
+	var url: URL? {
+		guard let urlString = imageAddress else { return nil }
+		return URL(string: urlString)
+	}
+
+	private let imageAddress: String?
+
+	init(title: String, author: String, created: Double, thumbnail: String, comments: Int, imageAddress: String?) {
+		self.title = title
+		self.author = author
+		self.created = created
+		self.thumbnail = thumbnail
+		self.comments = comments
+		self.imageAddress = imageAddress
+	}
 
     enum CodingKeys: String, CodingKey {
         case author
         case thumbnail
         case created
         case title
-        case image = "url"
+        case imageAddress = "url"
         case comments = "num_comments"
     }
 }

@@ -12,6 +12,11 @@ protocol TopEntriesListPresenterProtocol: class {
 	var view: TopEntriesListViewControllerProtocol? { get set }
 
 	var state: TopEntriesListViewState { get }
+
+	func loadData()
+
+	func setError(message: String?)
+	func loadEntries(entries: [RedditEntry])
 }
 
 enum TopEntriesListViewState {

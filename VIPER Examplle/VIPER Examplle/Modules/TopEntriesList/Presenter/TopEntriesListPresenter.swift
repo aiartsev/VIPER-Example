@@ -6,18 +6,39 @@
 //  Copyright © 2020 Alex Iartsev. All rights reserved.
 //
 
+import UIKit
+
 final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
+
+	private struct Constants {
+		static let ErrorMessage = NSLocalizedString("An error has occurred.", comment: "")
+	}
+
 	var router: TopEntriesListRouterProtocol?
 	var interactor: TopEntriesListInteractorProtocol?
-	var state: TopEntriesListViewState
+	var state: TopEntriesListViewState = .loading
 	weak var view: TopEntriesListViewControllerProtocol?
 
 	init(router: TopEntriesListRouterProtocol, interactor: TopEntriesListInteractorProtocol) {
 		self.router = router
 		self.interactor = interactor
-		state = .error(message: "I am an error!")
 
 		router.presenter = self
 		interactor.presenter = self
+	}
+
+	func setError(message: String? = nil) {
+		state = .error(message: message ?? Constants.ErrorMessage)
+		view?.reload()
+	}
+
+	func loadEntries(entries: [RedditEntry]) {
+		state = .entries(data: entries)
+		view?.reload()
+	}
+
+	func loadData() {
+		state = .loading
+		interactor?.getPosts()
 	}
 }

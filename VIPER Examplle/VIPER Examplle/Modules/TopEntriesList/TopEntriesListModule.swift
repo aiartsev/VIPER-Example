@@ -11,7 +11,7 @@ import UIKit
 class TopEntriesListModule {
 	func build() -> UIViewController {
 		let router = TopEntriesListRouter()
-		let interactor = TopEntriesListInteractor()
+		let interactor = TopEntriesListInteractor(service: MockRedditPostService(authorizationDelay: 2, postsDelay: 2))
 		let presenter = TopEntriesListPresenter(router: router, interactor: interactor)
 		let viewController = TopEntriesListViewController(presenter: presenter)
 

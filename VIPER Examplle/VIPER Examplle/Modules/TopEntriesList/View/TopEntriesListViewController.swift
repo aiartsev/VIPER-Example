@@ -26,7 +26,14 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		presenter?.loadData()
+	}
+
 	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		reload()
 	}
 
@@ -95,13 +102,7 @@ extension TopEntriesListViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		let state = presenter?.state ?? .loading
-
-		switch state {
-		case .entries:
-			return indexPath
-		default:
-			return nil
-		}
+		guard let state = presenter?.state, case .entries = state else { return nil }
+		return indexPath
 	}
 }

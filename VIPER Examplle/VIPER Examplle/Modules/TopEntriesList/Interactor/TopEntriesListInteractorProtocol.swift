@@ -8,4 +8,6 @@
 
 protocol TopEntriesListInteractorProtocol: class {
 	var presenter: TopEntriesListPresenterProtocol? { get set }
+
+	func getPosts()
 }
