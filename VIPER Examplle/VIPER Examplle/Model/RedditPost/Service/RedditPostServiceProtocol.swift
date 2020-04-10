@@ -6,7 +6,7 @@
 //  Copyright © 2020 Alex Iartsev. All rights reserved.
 //
 
-protocol RedditPostService: class {
+protocol RedditPostServiceProtocol: class {
 	func authorize(completion: @escaping (Error?) -> Void)
 	func getPosts(afterEntry: String?, completion: @escaping (TopListing?, Error?) -> Void)
 }

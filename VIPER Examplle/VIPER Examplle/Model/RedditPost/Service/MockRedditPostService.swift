@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MockRedditPostService: RedditPostService {
+class MockRedditPostService: RedditPostServiceProtocol {
 
 	private let authorizationDelay: Double
 	private let postsDelay: Double

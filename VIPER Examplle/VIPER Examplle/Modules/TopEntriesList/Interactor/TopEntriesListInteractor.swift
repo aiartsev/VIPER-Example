@@ -9,9 +9,9 @@
 final class TopEntriesListInteractor: TopEntriesListInteractorProtocol {
 	weak var presenter: TopEntriesListPresenterProtocol?
 
-	let service: RedditPostService
+	let service: RedditPostServiceProtocol
 
-	init(service: RedditPostService) {
+	init(service: RedditPostServiceProtocol) {
 		self.service = service
 	}
 

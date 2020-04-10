@@ -34,7 +34,9 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 	}
 
 	func reload() {
-		tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+		DispatchQueue.main.async { [weak self] in
+			self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+		}
 	}
 
 	private func configure() {
