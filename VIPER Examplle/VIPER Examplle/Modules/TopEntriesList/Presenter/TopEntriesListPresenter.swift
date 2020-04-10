@@ -32,7 +32,7 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 		view?.reload()
 	}
 
-	func loadEntries(entries: [RedditEntry]) {
+	func loadEntries(entries: [EntryCellModel]) {
 		state = .entries(data: entries)
 		view?.reload()
 	}
@@ -40,5 +40,21 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 	func loadData() {
 		state = .loading
 		interactor?.getPosts()
+	}
+
+	func dismissEntry(index: Int) {
+		guard case .entries(var data) = state, index < data.count, index >= 0 else { return }
+
+		data.remove(at: index)
+		state = .entries(data: data)
+		view?.reload()
+	}
+
+	func dismissAllEntries() {
+		guard case .entries = state else { return }
+		// TODO: There's an interesting error that happens when there is no values for the UITableView.
+		//	Adding an empty state cell would fix that error.
+		state = .entries(data: [])
+		view?.reload()
 	}
 }

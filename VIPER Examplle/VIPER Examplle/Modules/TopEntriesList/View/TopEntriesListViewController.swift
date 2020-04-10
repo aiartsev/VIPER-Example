@@ -29,13 +29,12 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		presenter?.loadData()
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewDidAppear(_ animated: Bool) {
 		reload()
 	}
 
 	func reload() {
-		tableView.reloadData()
+		tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 	}
 
 	private func configure() {
@@ -83,8 +82,7 @@ extension TopEntriesListViewController {
 		case .error(let message):
 			return configureErrorCel(tableView: tableView, indexPath: indexPath, message: message)
 		case .entries(let data):
-			let cellModel = EntryCellModel(entry: data[indexPath.row])
-			return configureEntryCel(tableView: tableView, indexPath: indexPath, model: cellModel)
+			return configureEntryCel(tableView: tableView, indexPath: indexPath, model: data[indexPath.row])
 		}
 	}
 
@@ -106,14 +104,31 @@ extension TopEntriesListViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: EntryCell.Constants.Identifier, for: indexPath)
 
 		if let entryCell = cell as? EntryCell {
-			entryCell.model = model
+			var cellModel = model
+			cellModel.dismissCell = { [weak self] in
+				self?.presenter?.dismissEntry(index: indexPath.row)
+			}
+			entryCell.model = cellModel
+
 		}
 
 		return cell
 	}
 
 	override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		guard let state = presenter?.state, case .entries = state else { return nil }
-		return indexPath
+		return nil
+	}
+
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		guard let state = presenter?.state, case .entries = state else { return UIView() }
+		let dismissButton = Button(title: "Dismiss All")
+
+		dismissButton.addTarget(self, action: #selector(dismissAllPressed), for: .touchUpInside)
+
+		return dismissButton
+	}
+
+	@objc private func dismissAllPressed() {
+		presenter?.dismissAllEntries()
 	}
 }

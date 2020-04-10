@@ -14,13 +14,15 @@ protocol TopEntriesListPresenterProtocol: class {
 	var state: TopEntriesListViewState { get }
 
 	func loadData()
+	func dismissEntry(index: Int)
+	func dismissAllEntries()
 
 	func setError(message: String?)
-	func loadEntries(entries: [RedditEntry])
+	func loadEntries(entries: [EntryCellModel])
 }
 
 enum TopEntriesListViewState {
 	case loading
 	case error(message: String?)
-	case entries(data: [RedditEntry])
+	case entries(data: [EntryCellModel])
 }

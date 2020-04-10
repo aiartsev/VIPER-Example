@@ -68,6 +68,8 @@ final class EntryCell: UITableViewCell {
 
 		contentStack.addArrangedSubview(statusStack)
 		contentStack.addArrangedSubview(dismissButton)
+
+		dismissButton.addTarget(self, action: #selector(dismissPressed), for: .touchUpInside)
 	}
 
 	var model: EntryCellModel? {
@@ -85,6 +87,14 @@ final class EntryCell: UITableViewCell {
 				thumbnailImageView.isHidden = true
 			}
 		}
+	}
+
+	@objc func dismissPressed() {
+		model?.dismissCell?()
+	}
+
+	override func prepareForReuse() {
+		model = nil
 	}
 }
 
@@ -118,4 +128,6 @@ struct EntryCellModel {
 	init(entry: RedditEntry) {
 		self.entry = entry
 	}
+
+	var dismissCell: (() -> Void)?
 }

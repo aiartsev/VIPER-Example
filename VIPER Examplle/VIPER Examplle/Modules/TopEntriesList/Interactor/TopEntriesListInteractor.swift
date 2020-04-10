@@ -22,7 +22,7 @@ final class TopEntriesListInteractor: TopEntriesListInteractorProtocol {
 				return
 			}
 
-			self?.presenter?.loadEntries(entries: listing.entries.map { $0.data })
+			self?.presenter?.loadEntries(entries: listing.entries.map { EntryCellModel(entry: $0.data) })
 		}
 	}
 }
