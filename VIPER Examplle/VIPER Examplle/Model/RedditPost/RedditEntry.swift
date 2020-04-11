@@ -14,7 +14,6 @@ struct RedditEntry: Codable {
     let created: Double
     let thumbnail: String?
     let comments: Int
-	let read: Bool = false
 
 	var url: URL? {
 		guard let urlString = imageAddress else { return nil }

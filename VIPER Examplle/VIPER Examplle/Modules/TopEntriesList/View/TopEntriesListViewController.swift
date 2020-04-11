@@ -50,6 +50,12 @@ final class TopEntriesListViewController: UIViewController, TopEntriesListViewCo
 		}
 	}
 
+	func reload(index: Int) {
+		DispatchQueue.main.async { [weak self] in
+			self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+		}
+	}
+
 	private func layout() {
 		view.addSubview(tableView)
 
@@ -127,11 +133,14 @@ extension TopEntriesListViewController: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: EntryCell.Constants.Identifier, for: indexPath)
 
 		if let entryCell = cell as? EntryCell {
-			var cellModel = model
-			cellModel.dismissCell = { [weak self] in
+			entryCell.dismissCell = { [weak self] cell in
+				guard let indexPath = tableView.indexPath(for: cell) else { return }
 				self?.presenter?.dismissEntry(index: indexPath.row)
+				tableView.beginUpdates()
+				tableView.deleteRows(at: [indexPath], with: .fade)
+				tableView.endUpdates()
 			}
-			entryCell.model = cellModel
+			entryCell.model = model
 
 		}
 
@@ -161,6 +170,12 @@ extension TopEntriesListViewController: UITableViewDataSource {
 
 extension TopEntriesListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		return nil
+		guard let state = presenter?.state, case .entries = state else { return nil }
+		return indexPath
+	}
+
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		presenter?.rowSelected(index: indexPath.row)
+		tableView.selectRow(at: nil, animated: true, scrollPosition: .none)
 	}
 }

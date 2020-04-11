@@ -16,6 +16,7 @@ protocol TopEntriesListPresenterProtocol: class {
 	func loadData()
 	func dismissEntry(index: Int)
 	func dismissAllEntries()
+	func rowSelected(index: Int) 
 
 	func setError(message: String?)
 	func loadEntries(entries: [EntryCellModel])

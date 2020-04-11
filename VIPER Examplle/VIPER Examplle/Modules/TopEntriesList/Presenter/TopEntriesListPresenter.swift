@@ -47,7 +47,7 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 
 		data.remove(at: index)
 		state = .entries(data: data)
-		view?.reload()
+//		view?.reload()
 	}
 
 	func dismissAllEntries() {
@@ -56,5 +56,14 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 		//	Adding an empty state cell would fix that error.
 		state = .entries(data: [])
 		view?.reload()
+	}
+
+	func rowSelected(index: Int) {
+		guard case .entries(var data) = state else { return }
+		var entry = data[index]
+		entry.read = true
+		data[index] = entry
+		state = .entries(data: data)
+		view?.reload(index: index)
 	}
 }

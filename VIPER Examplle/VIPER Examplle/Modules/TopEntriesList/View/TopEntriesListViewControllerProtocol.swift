@@ -12,4 +12,5 @@ protocol TopEntriesListViewControllerProtocol: class {
 	var presenter: TopEntriesListPresenterProtocol? { get set }
 
 	func reload()
+	func reload(index: Int)
 }

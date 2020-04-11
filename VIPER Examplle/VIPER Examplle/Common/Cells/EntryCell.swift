@@ -96,12 +96,14 @@ final class EntryCell: UITableViewCell {
 		}
 	}
 
+	var dismissCell: ((EntryCell) -> Void)?
 	@objc func dismissPressed() {
-		model?.dismissCell?()
+		dismissCell?(self)
 	}
 
 	override func prepareForReuse() {
 		model = nil
+		dismissCell = nil
 	}
 }
 
@@ -124,8 +126,9 @@ struct EntryCellModel {
 		return String(format: NSLocalizedString("%d comments", comment: ""), entry.comments)
 	}
 
+	var read: Bool = false
 	var status: String {
-		return entry.read ? NSLocalizedString("Read", comment: "") : NSLocalizedString("Unread", comment: "")
+		return read ? NSLocalizedString("Read", comment: "") : NSLocalizedString("Unread", comment: "")
 	}
 
 	var thumbnail: URL? {
@@ -136,6 +139,4 @@ struct EntryCellModel {
 	init(entry: RedditEntry) {
 		self.entry = entry
 	}
-
-	var dismissCell: (() -> Void)?
 }
