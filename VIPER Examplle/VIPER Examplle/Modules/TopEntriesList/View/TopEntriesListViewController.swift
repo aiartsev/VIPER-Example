@@ -8,15 +8,26 @@
 
 import UIKit
 
-final class TopEntriesListViewController: UITableViewController, TopEntriesListViewControllerProtocol {
+final class TopEntriesListViewController: UIViewController, TopEntriesListViewControllerProtocol {
 	var presenter: TopEntriesListPresenterProtocol?
+
+	let tableView: UITableView = {
+		let view = UITableView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.showsVerticalScrollIndicator = false
+		view.separatorStyle = .none
+		view.tableFooterView = UIView()
+
+		return view
+	}()
 
 	init(presenter: TopEntriesListPresenterProtocol) {
 		self.presenter = presenter
 		super.init(nibName: nil, bundle: nil)
 		presenter.view = self
 
-		configure()
+		layout()
+		bind()
 	}
 
 	required init?(coder: NSCoder) {
@@ -39,12 +50,22 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 		}
 	}
 
-	private func configure() {
+	private func layout() {
+		view.addSubview(tableView)
+
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+		])
+	}
+
+	private func bind() {
 		view.backgroundColor = .white
 
-		tableView.showsVerticalScrollIndicator = false
-		tableView.separatorStyle = .none
-		tableView.tableFooterView = UIView()
+		tableView.delegate = self
+		tableView.dataSource = self
 
 		tableView.register(ActivityCell.self, forCellReuseIdentifier: ActivityCell.Constants.Identifier)
 		tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.Constants.Identifier)
@@ -52,8 +73,8 @@ final class TopEntriesListViewController: UITableViewController, TopEntriesListV
 	}
 }
 
-extension TopEntriesListViewController {
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension TopEntriesListViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		guard let presenter = presenter else { return 0 }
 
 		switch presenter.state {
@@ -64,7 +85,7 @@ extension TopEntriesListViewController {
 		}
 	}
 
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		guard let presenter = presenter else { return 0 }
 
 		switch presenter.state {
@@ -75,7 +96,7 @@ extension TopEntriesListViewController {
 		}
 	}
 
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let state = presenter?.state ?? .loading
 
 		switch state {
@@ -117,20 +138,29 @@ extension TopEntriesListViewController {
 		return cell
 	}
 
-	override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		return nil
-	}
-
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		guard let state = presenter?.state, case .entries = state else { return UIView() }
 		let dismissButton = Button(title: "Dismiss All")
+		dismissButton.titleLabel?.textAlignment = .center
 
 		dismissButton.addTarget(self, action: #selector(dismissAllPressed), for: .touchUpInside)
+		let headerView = UIView()
+		headerView.backgroundColor = .white
+		headerView.addSubview(dismissButton)
+		NSLayoutConstraint.activate(headerView.constraintsAligning(subView: dismissButton,
+																   vertically: .fill(inset: .zero),
+																   horizontally: .fill(inset: .zero)))
 
-		return dismissButton
+		return headerView
 	}
 
 	@objc private func dismissAllPressed() {
 		presenter?.dismissAllEntries()
+	}
+}
+
+extension TopEntriesListViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+		return nil
 	}
 }

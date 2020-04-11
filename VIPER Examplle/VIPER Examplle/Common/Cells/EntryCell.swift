@@ -19,6 +19,7 @@ final class EntryCell: UITableViewCell {
 		fileprivate static let ReadFont: UIFont = .systemFont(ofSize: 12.0)
 		fileprivate static let Spacing: CGFloat = 10
 		fileprivate static let DismissTitle = NSLocalizedString("Dismiss", comment: "")
+		fileprivate static let ThumbnailWidthMultiplier: CGFloat = 0.25
 	}
 
 	private let titleLabel = Label(font: Constants.TitleFont)
@@ -56,18 +57,24 @@ final class EntryCell: UITableViewCell {
 		let subtitleStack = StackView(axis: .horizontal, spacing: Constants.Spacing)
 		subtitleStack.addArrangedSubview(dateLabel)
 		subtitleStack.addArrangedSubview(authorLabel)
-
 		mainDataTextStack.addArrangedSubview(subtitleStack)
+
+		let statusStack = StackView(axis: .horizontal, spacing: Constants.Spacing)
+		statusStack.setContentHuggingPriority(.defaultLow, for: .vertical)
+		statusStack.addArrangedSubview(commentsLabel)
+		statusStack.addArrangedSubview(readLabel)
+		mainDataTextStack.addArrangedSubview(statusStack)
+
 		mainDataStack.addArrangedSubview(mainDataTextStack)
 
 		contentStack.addArrangedSubview(mainDataStack)
 
-		let statusStack = StackView(axis: .horizontal, spacing: Constants.Spacing)
-		statusStack.addArrangedSubview(commentsLabel)
-		statusStack.addArrangedSubview(readLabel)
-
-		contentStack.addArrangedSubview(statusStack)
 		contentStack.addArrangedSubview(dismissButton)
+
+		NSLayoutConstraint.activate([
+			thumbnailImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: Constants.ThumbnailWidthMultiplier),
+			thumbnailImageView.heightAnchor.constraint(equalTo: thumbnailImageView.widthAnchor)
+		])
 
 		dismissButton.addTarget(self, action: #selector(dismissPressed), for: .touchUpInside)
 	}
@@ -82,7 +89,7 @@ final class EntryCell: UITableViewCell {
 
 			if let thumbnail = model?.thumbnail {
 				thumbnailImageView.isHidden = false
-				// TODO: configure thumbnail
+				thumbnailImageView.load(fromURL: thumbnail)
 			} else {
 				thumbnailImageView.isHidden = true
 			}
@@ -121,8 +128,9 @@ struct EntryCellModel {
 		return entry.read ? NSLocalizedString("Read", comment: "") : NSLocalizedString("Unread", comment: "")
 	}
 
-	var thumbnail: String? {
-		return entry.thumbnail
+	var thumbnail: URL? {
+		guard let urlString = entry.thumbnail else { return nil }
+		return URL(string: urlString)
 	}
 
 	init(entry: RedditEntry) {
