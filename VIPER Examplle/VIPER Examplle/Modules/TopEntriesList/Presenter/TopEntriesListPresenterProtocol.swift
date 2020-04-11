@@ -12,11 +12,13 @@ protocol TopEntriesListPresenterProtocol: class {
 	var view: TopEntriesListViewControllerProtocol? { get set }
 
 	var state: TopEntriesListViewState { get }
+	var headerButtonTitle: String? { get }
 
 	func loadData()
-	func dismissEntry(index: Int)
-	func dismissAllEntries()
-	func rowSelected(index: Int) 
+	func entryButtonPressed(index: Int)
+	func headerButtonPressed()
+	func rowSelected(index: Int)
+	func refreshData()
 
 	func setError(message: String?)
 	func loadEntries(entries: [EntryCellModel])

@@ -9,7 +9,7 @@
 import UIKit
 
 final class Button: UIButton {
-	init(title: String) {
+	init(title: String? = nil) {
 		super.init(frame: .zero)
 		translatesAutoresizingMaskIntoConstraints = false
 		setTitle(title, for: .normal)

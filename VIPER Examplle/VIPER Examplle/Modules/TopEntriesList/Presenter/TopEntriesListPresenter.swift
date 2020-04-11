@@ -12,12 +12,17 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 
 	private struct Constants {
 		static let ErrorMessage = NSLocalizedString("An error has occurred.", comment: "")
+		static let DismissAllTitle = NSLocalizedString("Dismiss All", comment: "")
 	}
 
 	var router: TopEntriesListRouterProtocol?
 	var interactor: TopEntriesListInteractorProtocol?
 	var state: TopEntriesListViewState = .loading
 	weak var view: TopEntriesListViewControllerProtocol?
+
+	var headerButtonTitle: String? {
+		return Constants.DismissAllTitle
+	}
 
 	init(router: TopEntriesListRouterProtocol, interactor: TopEntriesListInteractorProtocol) {
 		self.router = router
@@ -42,15 +47,14 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 		interactor?.getPosts()
 	}
 
-	func dismissEntry(index: Int) {
+	func entryButtonPressed(index: Int) {
 		guard case .entries(var data) = state, index < data.count, index >= 0 else { return }
 
 		data.remove(at: index)
 		state = .entries(data: data)
-//		view?.reload()
 	}
 
-	func dismissAllEntries() {
+	func headerButtonPressed() {
 		guard case .entries = state else { return }
 		// TODO: There's an interesting error that happens when there is no values for the UITableView.
 		//	Adding an empty state cell would fix that error.
@@ -65,5 +69,9 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 		data[index] = entry
 		state = .entries(data: data)
 		view?.reload(index: index)
+	}
+
+	func refreshData() {
+		interactor?.getPosts()
 	}
 }
