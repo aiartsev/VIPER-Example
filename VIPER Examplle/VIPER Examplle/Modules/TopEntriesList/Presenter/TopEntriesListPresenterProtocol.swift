@@ -15,6 +15,7 @@ protocol TopEntriesListPresenterProtocol: class {
 	var headerButtonTitle: String? { get }
 
 	func entryButtonPressed(index: Int)
+	func entryThumbnailPressed(index: Int)
 	func headerButtonPressed()
 	func rowSelected(index: Int)
 	func nextPage()

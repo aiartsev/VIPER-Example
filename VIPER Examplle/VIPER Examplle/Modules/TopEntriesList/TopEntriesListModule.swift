@@ -8,13 +8,15 @@
 
 import UIKit
 
-class TopEntriesListModule {
+final class TopEntriesListModule {
 	func build() -> UIViewController {
 		let router = TopEntriesListRouter()
 		let interactor = TopEntriesListInteractor(service: RedditPostService(deviceId: UIDevice.current.identifierForVendor!.uuidString))
 		let presenter = TopEntriesListPresenter(router: router, interactor: interactor)
 		let viewController = TopEntriesListViewController(presenter: presenter)
 
-		return viewController
+		router.setBaseView(viewController: viewController)
+
+		return router.navigationController
 	}
 }

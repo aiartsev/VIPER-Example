@@ -57,6 +57,11 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 		}
 	}
 
+	func entryThumbnailPressed(index: Int) {
+		guard case .entry(let data) = cellData[index], data.entry.url != nil else { return }
+		router?.displayImage(entry: data.entry)
+	}
+
 	func headerButtonPressed() {
 		cellData = cellData.filter { !$0.canBeDismissed }
 		view?.reload()

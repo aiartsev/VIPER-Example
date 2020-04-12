@@ -108,7 +108,7 @@ final class TopEntriesListViewController: UIViewController, TopEntriesListViewCo
 	}
 
 	@objc private func refreshPulled() {
-		presenter?.nextPage()
+		presenter?.refresh()
 	}
 }
 
@@ -174,6 +174,12 @@ extension TopEntriesListViewController: UITableViewDataSource {
 				guard let indexPath = tableView.indexPath(for: cell) else { return }
 				self?.presenter?.entryButtonPressed(index: indexPath.row)
 			}
+
+			entryCell.pressThumbnail = { [weak self] cell in
+				guard let indexPath = tableView.indexPath(for: cell) else { return }
+				self?.presenter?.entryThumbnailPressed(index: indexPath.row)
+			}
+
 			entryCell.model = model
 
 		}

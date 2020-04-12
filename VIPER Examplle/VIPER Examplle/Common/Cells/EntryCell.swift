@@ -25,10 +25,16 @@ final class EntryCell: UITableViewCell {
 	private let titleLabel = Label(font: Constants.TitleFont)
 	private let dateLabel = Label(font: Constants.DateFont, alignment: .left)
 	private let authorLabel = Label(font: Constants.AuthorFont, alignment: .right)
-	private let thumbnailImageView = ImageView()
 	private let commentsLabel = Label(font: Constants.CommentsFont, alignment: .left)
 	private let readLabel = Label(font: Constants.ReadFont, alignment: .right)
 	private let dismissButton = Button(title: Constants.DismissTitle)
+
+	private let thumbnailImageView: ImageView = {
+		let view = ImageView()
+		view.isUserInteractionEnabled = true
+
+		return view
+	}()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -77,6 +83,8 @@ final class EntryCell: UITableViewCell {
 		])
 
 		dismissButton.addTarget(self, action: #selector(dismissPressed), for: .touchUpInside)
+		thumbnailImageView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+																	   action: #selector(thumbnailPressed)))
 	}
 
 	var model: EntryCellModel? {
@@ -108,14 +116,20 @@ final class EntryCell: UITableViewCell {
 		dismissCell?(self)
 	}
 
+	var pressThumbnail: ((EntryCell) -> Void)?
+	@objc func thumbnailPressed() {
+		pressThumbnail?(self)
+	}
+
 	override func prepareForReuse() {
 		model = nil
 		dismissCell = nil
+		pressThumbnail = nil
 	}
 }
 
 struct EntryCellModel {
-	private let entry: RedditEntry
+	let entry: RedditEntry
 
 	var title: String {
 		return entry.title
@@ -126,7 +140,18 @@ struct EntryCellModel {
 	}
 
 	var date: String {
-		return "some date"
+		let secondsInterval = Date().timeIntervalSince1970 - entry.created
+		let minutesInterval = secondsInterval / 60
+		guard minutesInterval >= 1 else {
+			return String(format: NSLocalizedString("%d seconds ago",comment: ""), Int(secondsInterval))
+		}
+
+		let hoursInterval = minutesInterval / 60
+		guard hoursInterval >= 1 else {
+			return String(format: NSLocalizedString("%d minutes ago", comment: ""), Int(minutesInterval))
+		}
+
+		return String(format: NSLocalizedString("%d hours ago", comment: ""), Int(hoursInterval))
 	}
 
 	var comments: String {
