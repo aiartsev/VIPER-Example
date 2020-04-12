@@ -48,19 +48,9 @@ final class TopEntriesListViewController: UIViewController, TopEntriesListViewCo
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		presenter?.loadData()
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		reload()
-	}
-
 	func reload() {
 		DispatchQueue.main.async { [weak self] in
-			if let state = self?.presenter?.state, case .entries = state {
+			if let data = self?.presenter?.cellData, data.contains(where: { $0.canBeDismissed }) {
 				self?.headerButton.isHidden = false
 			} else {
 				self?.headerButton.isHidden = true
@@ -75,6 +65,12 @@ final class TopEntriesListViewController: UIViewController, TopEntriesListViewCo
 		DispatchQueue.main.async { [weak self] in
 			self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
 		}
+	}
+
+	func delete(index: Int) {
+		tableView.beginUpdates()
+		tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+		tableView.endUpdates()
 	}
 
 	private func layout() {
@@ -112,48 +108,52 @@ final class TopEntriesListViewController: UIViewController, TopEntriesListViewCo
 	}
 
 	@objc private func refreshPulled() {
-		presenter?.refreshData()
+		presenter?.refresh()
 	}
 }
 
 extension TopEntriesListViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		guard let presenter = presenter else { return 0 }
-
-		switch presenter.state {
-		case .entries(let data):
-			return data.count
-		default:
-			return 1
-		}
+		return presenter?.cellData.count ?? 0
 	}
 
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		guard let presenter = presenter else { return 0 }
 
-		switch presenter.state {
-		case .loading:
-			return tableView.bounds.size.height
-		default:
+		guard presenter.cellData.count == 1, let firstCell = presenter.cellData.first, case .loading = firstCell else {
 			return UITableView.automaticDimension
+		}
+
+		return tableView.bounds.size.height
+	}
+
+	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		if let cellType = presenter?.cellData[indexPath.row], case .loading = cellType {
+			presenter?.nextPage()
 		}
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let state = presenter?.state ?? .loading
+		let cellData = presenter?.cellData[indexPath.row] ?? .loading
 
-		switch state {
+		switch cellData {
 		case .loading:
 			return configureLoadingCell(tableView: tableView, indexPath: indexPath)
 		case .error(let message):
 			return configureErrorCel(tableView: tableView, indexPath: indexPath, message: message)
-		case .entries(let data):
-			return configureEntryCel(tableView: tableView, indexPath: indexPath, model: data[indexPath.row])
+		case .entry(let data):
+			return configureEntryCel(tableView: tableView, indexPath: indexPath, model: data)
 		}
 	}
 
 	private func configureLoadingCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-		return tableView.dequeueReusableCell(withIdentifier: ActivityCell.Constants.Identifier, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: ActivityCell.Constants.Identifier, for: indexPath)
+
+		if let activityCell = cell as? ActivityCell {
+			activityCell.startAnimating()
+		}
+
+		return cell
 	}
 
 	private func configureErrorCel(tableView: UITableView, indexPath: IndexPath, message: String?) -> UITableViewCell {
@@ -173,10 +173,13 @@ extension TopEntriesListViewController: UITableViewDataSource {
 			entryCell.dismissCell = { [weak self] cell in
 				guard let indexPath = tableView.indexPath(for: cell) else { return }
 				self?.presenter?.entryButtonPressed(index: indexPath.row)
-				tableView.beginUpdates()
-				tableView.deleteRows(at: [indexPath], with: .fade)
-				tableView.endUpdates()
 			}
+
+			entryCell.pressThumbnail = { [weak self] cell in
+				guard let indexPath = tableView.indexPath(for: cell) else { return }
+				self?.presenter?.entryThumbnailPressed(index: indexPath.row)
+			}
+
 			entryCell.model = model
 
 		}
@@ -191,12 +194,15 @@ extension TopEntriesListViewController: UITableViewDataSource {
 
 extension TopEntriesListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		guard let state = presenter?.state, case .entries = state else { return nil }
+		guard let cellData = presenter?.cellData[indexPath.row], case .entry = cellData else { return nil }
 		return indexPath
 	}
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.beginUpdates()
 		presenter?.rowSelected(index: indexPath.row)
+		tableView.reloadRows(at: [indexPath], with: .automatic)
+		tableView.endUpdates()
 		tableView.selectRow(at: nil, animated: true, scrollPosition: .none)
 	}
 }

@@ -33,10 +33,19 @@
 		1B3FD9DE244129A9002C4FF6 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9DD244129A9002C4FF6 /* StackView.swift */; };
 		1B3FD9E024412E16002C4FF6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9DF24412E16002C4FF6 /* Button.swift */; };
 		1B3FD9E224413B05002C4FF6 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3FD9E124413B05002C4FF6 /* AccessToken.swift */; };
+		1B55C2092443A8CB001DF58C /* EntryImageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C2082443A8CB001DF58C /* EntryImageModule.swift */; };
+		1B55C20D2443A944001DF58C /* EntryImageInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C20C2443A944001DF58C /* EntryImageInteractorProtocol.swift */; };
+		1B55C20F2443A969001DF58C /* EntryImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C20E2443A969001DF58C /* EntryImageInteractor.swift */; };
+		1B55C2112443A994001DF58C /* EntryImagePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C2102443A994001DF58C /* EntryImagePresenterProtocol.swift */; };
+		1B55C2132443A9DE001DF58C /* EntryImageRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C2122443A9DE001DF58C /* EntryImageRouterProtocol.swift */; };
+		1B55C2152443AA11001DF58C /* EntryImageViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C2142443AA11001DF58C /* EntryImageViewProtocol.swift */; };
+		1B55C2192443AA8E001DF58C /* EntryImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C2182443AA8E001DF58C /* EntryImagePresenter.swift */; };
+		1B55C21B2443AACA001DF58C /* EntryImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C21A2443AACA001DF58C /* EntryImageRouter.swift */; };
+		1B55C21D2443AAF9001DF58C /* EntryImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C21C2443AAF9001DF58C /* EntryImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B3FD98F243FB742002C4FF6 /* VIPER Examplle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER Examplle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B3FD98F243FB742002C4FF6 /* VIPER Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3FD992243FB742002C4FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B3FD99B243FB745002C4FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3FD99E243FB745002C4FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +73,15 @@
 		1B3FD9DD244129A9002C4FF6 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		1B3FD9DF24412E16002C4FF6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1B3FD9E124413B05002C4FF6 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		1B55C2082443A8CB001DF58C /* EntryImageModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageModule.swift; sourceTree = "<group>"; };
+		1B55C20C2443A944001DF58C /* EntryImageInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageInteractorProtocol.swift; sourceTree = "<group>"; };
+		1B55C20E2443A969001DF58C /* EntryImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageInteractor.swift; sourceTree = "<group>"; };
+		1B55C2102443A994001DF58C /* EntryImagePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImagePresenterProtocol.swift; sourceTree = "<group>"; };
+		1B55C2122443A9DE001DF58C /* EntryImageRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageRouterProtocol.swift; sourceTree = "<group>"; };
+		1B55C2142443AA11001DF58C /* EntryImageViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageViewProtocol.swift; sourceTree = "<group>"; };
+		1B55C2182443AA8E001DF58C /* EntryImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImagePresenter.swift; sourceTree = "<group>"; };
+		1B55C21A2443AACA001DF58C /* EntryImageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageRouter.swift; sourceTree = "<group>"; };
+		1B55C21C2443AAF9001DF58C /* EntryImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +106,7 @@
 		1B3FD990243FB742002C4FF6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B3FD98F243FB742002C4FF6 /* VIPER Examplle.app */,
+				1B3FD98F243FB742002C4FF6 /* VIPER Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +128,7 @@
 		1B3FD9A6243FD459002C4FF6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1B55C2052443A88A001DF58C /* EntryImage */,
 				1B3FD9A7243FD4A2002C4FF6 /* TopEntriesList */,
 			);
 			path = Modules;
@@ -231,6 +250,54 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		1B55C2052443A88A001DF58C /* EntryImage */ = {
+			isa = PBXGroup;
+			children = (
+				1B55C20A2443A911001DF58C /* Interactor */,
+				1B55C2072443A8BB001DF58C /* Presenter */,
+				1B55C20B2443A919001DF58C /* Router */,
+				1B55C2062443A8B0001DF58C /* View */,
+				1B55C2082443A8CB001DF58C /* EntryImageModule.swift */,
+			);
+			path = EntryImage;
+			sourceTree = "<group>";
+		};
+		1B55C2062443A8B0001DF58C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B55C2142443AA11001DF58C /* EntryImageViewProtocol.swift */,
+				1B55C21C2443AAF9001DF58C /* EntryImageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B55C2072443A8BB001DF58C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1B55C2102443A994001DF58C /* EntryImagePresenterProtocol.swift */,
+				1B55C2182443AA8E001DF58C /* EntryImagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1B55C20A2443A911001DF58C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1B55C20C2443A944001DF58C /* EntryImageInteractorProtocol.swift */,
+				1B55C20E2443A969001DF58C /* EntryImageInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1B55C20B2443A919001DF58C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1B55C2122443A9DE001DF58C /* EntryImageRouterProtocol.swift */,
+				1B55C21A2443AACA001DF58C /* EntryImageRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,7 +315,7 @@
 			);
 			name = "VIPER Examplle";
 			productName = "VIPER Examplle";
-			productReference = 1B3FD98F243FB742002C4FF6 /* VIPER Examplle.app */;
+			productReference = 1B3FD98F243FB742002C4FF6 /* VIPER Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -302,17 +369,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B3FD9A9243FD5B8002C4FF6 /* TopEntriesListModule.swift in Sources */,
+				1B55C2112443A994001DF58C /* EntryImagePresenterProtocol.swift in Sources */,
 				1B3FD9E224413B05002C4FF6 /* AccessToken.swift in Sources */,
 				1B3FD9BB243FD8B9002C4FF6 /* TopEntriesListRouter.swift in Sources */,
 				1B3FD9B9243FD847002C4FF6 /* TopEntriesListPresenter.swift in Sources */,
+				1B55C2132443A9DE001DF58C /* EntryImageRouterProtocol.swift in Sources */,
+				1B55C21D2443AAF9001DF58C /* EntryImageViewController.swift in Sources */,
+				1B55C20F2443A969001DF58C /* EntryImageInteractor.swift in Sources */,
+				1B55C21B2443AACA001DF58C /* EntryImageRouter.swift in Sources */,
 				1B3FD9B5243FD6BB002C4FF6 /* TopEntriesListViewControllerProtocol.swift in Sources */,
 				1B3FD993243FB742002C4FF6 /* AppDelegate.swift in Sources */,
 				1B3FD9D3243FE92B002C4FF6 /* ErrorCell.swift in Sources */,
 				1B3FD9AF243FD63F002C4FF6 /* TopEntriesListInteractorProtocol.swift in Sources */,
+				1B55C2152443AA11001DF58C /* EntryImageViewProtocol.swift in Sources */,
 				1B3FD9DA244126D4002C4FF6 /* EntryCell.swift in Sources */,
 				1B3FD9C7243FE16B002C4FF6 /* ActivityCell.swift in Sources */,
 				1B3FD9B7243FD808002C4FF6 /* TopEntriesListInteractor.swift in Sources */,
 				1B3FD9DE244129A9002C4FF6 /* StackView.swift in Sources */,
+				1B55C2192443AA8E001DF58C /* EntryImagePresenter.swift in Sources */,
 				1B3FD9D824411D8F002C4FF6 /* MockRedditPostService.swift in Sources */,
 				1B3FD9DC24412815002C4FF6 /* ImageView.swift in Sources */,
 				1B3FD9CF243FE8AA002C4FF6 /* ActivityView.swift in Sources */,
@@ -321,8 +395,10 @@
 				1B3FD9B1243FD66F002C4FF6 /* TopEntriesListPresenterProtocol.swift in Sources */,
 				1B3FD9C1243FDE7C002C4FF6 /* RedditEntry.swift in Sources */,
 				1B3FD9D1243FE8F0002C4FF6 /* Label.swift in Sources */,
+				1B55C2092443A8CB001DF58C /* EntryImageModule.swift in Sources */,
 				1B3FD9BD243FD9BE002C4FF6 /* TopEntriesListViewController.swift in Sources */,
 				1B3FD9C3243FDE86002C4FF6 /* RedditPostService.swift in Sources */,
+				1B55C20D2443A944001DF58C /* EntryImageInteractorProtocol.swift in Sources */,
 				1B3FD9CC243FE276002C4FF6 /* UIView+Constraints.swift in Sources */,
 				1B3FD9D624411C4E002C4FF6 /* RedditPostServiceProtocol.swift in Sources */,
 			);
@@ -466,8 +542,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Examplle";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Example";
+				PRODUCT_NAME = "VIPER Example";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -483,8 +559,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Examplle";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Example";
+				PRODUCT_NAME = "VIPER Example";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

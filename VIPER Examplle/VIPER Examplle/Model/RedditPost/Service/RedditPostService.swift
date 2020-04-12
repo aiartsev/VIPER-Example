@@ -20,7 +20,7 @@ final class RedditPostService: RedditPostServiceProtocol {
 		static let Authorization = "Authorization"
 		static let Host = "https://www.reddit.com/"
 		static let AuthURI = "api/v1/access_token"
-		static let TopPostsURL = "https://oauth.reddit.com/top"
+		static let TopPostsURL = "https://oauth.reddit.com/top/.json?t=all&limit=10"
 	}
 
     let uuid: String
@@ -80,7 +80,7 @@ final class RedditPostService: RedditPostServiceProtocol {
 		let session = URLSession(configuration: .ephemeral)
 		var urlString = Constants.TopPostsURL
 		if let entryId = afterEntry {
-			urlString = urlString.appending("?after=\(entryId)")
+			urlString = urlString.appending("&after=\(entryId)")
 		}
 
 		let url = URL(string: urlString)!

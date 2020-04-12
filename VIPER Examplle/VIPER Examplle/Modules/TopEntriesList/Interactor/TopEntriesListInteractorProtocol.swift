@@ -9,5 +9,5 @@
 protocol TopEntriesListInteractorProtocol: class {
 	var presenter: TopEntriesListPresenterProtocol? { get set }
 
-	func getPosts()
+	func getPosts(refresh: Bool)
 }

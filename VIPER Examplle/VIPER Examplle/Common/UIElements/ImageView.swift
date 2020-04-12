@@ -34,9 +34,11 @@ final class ImageView: UIImageView {
         let task = session.dataTask(with: url, completionHandler: {[weak self] (data: Data?, response: URLResponse?, error: Error?) -> Void in
 			self?.activityView.stopAnimating()
             guard let data = data, let image = UIImage(data: data) else {
+				self?.isHidden = true
                 return
             }
 
+			self?.isHidden = false
             self?.image = image
         })
 

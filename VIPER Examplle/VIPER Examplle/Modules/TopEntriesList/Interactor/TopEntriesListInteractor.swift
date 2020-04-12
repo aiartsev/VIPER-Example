@@ -10,18 +10,24 @@ final class TopEntriesListInteractor: TopEntriesListInteractorProtocol {
 	weak var presenter: TopEntriesListPresenterProtocol?
 
 	let service: RedditPostServiceProtocol
+	var afterEntry: String?
 
 	init(service: RedditPostServiceProtocol) {
 		self.service = service
 	}
 
-	func getPosts() {
-		service.getPosts(afterEntry: nil) { [weak self] listing, error in
+	func getPosts(refresh: Bool) {
+		if refresh {
+			afterEntry = nil
+		}
+		
+		service.getPosts(afterEntry: afterEntry) { [weak self] listing, error in
 			guard error == nil, let listing = listing else {
 				self?.presenter?.setError(message: nil)
 				return
 			}
 
+			self?.afterEntry = listing.after
 			self?.presenter?.loadEntries(entries: listing.entries.map { EntryCellModel(entry: $0.data) })
 		}
 	}
