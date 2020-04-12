@@ -12,4 +12,6 @@ protocol EntryImageInteractorProtocol: class {
 	var presenter: EntryImagePresenterProtocol? { get set }
 
 	var imageURL: URL? { get }
+
+	func encodeState(coder: NSCoder)
 }

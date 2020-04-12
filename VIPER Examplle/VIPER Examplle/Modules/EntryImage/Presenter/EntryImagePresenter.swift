@@ -24,4 +24,8 @@ final class EntryImagePresenter: EntryImagePresenterProtocol {
 		router.presenter = self
 		interactor.presenter = self
 	}
+
+	func encodeState(coder: NSCoder) {
+		interactor?.encodeState(coder: coder)
+	}
 }

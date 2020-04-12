@@ -14,6 +14,22 @@ final class EntryImageModule {
 		let interactor = EntryImageInteractor(entry: entry)
 		let presenter = EntryImagePresenter(router: router, interactor: interactor)
 		let viewController = EntryImageViewController(presenter: presenter)
+		viewController.restorationClass = EntryImageModule.self
+		viewController.restorationIdentifier = "EntryImageModule"
+
+		return viewController
+	}
+}
+
+extension EntryImageModule: UIViewControllerRestoration {
+	static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+		guard let interactor = EntryImageInteractor(coder: coder) else { return nil }
+		let router = EntryImageRouter()
+
+		let presenter = EntryImagePresenter(router: router, interactor: interactor)
+		let viewController = EntryImageViewController(presenter: presenter)
+		viewController.restorationClass = EntryImageModule.self
+		viewController.restorationIdentifier = "EntryImageModule"
 
 		return viewController
 	}

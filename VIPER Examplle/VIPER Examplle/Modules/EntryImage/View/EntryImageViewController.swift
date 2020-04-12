@@ -31,6 +31,10 @@ final class EntryImageViewController: UIViewController, EntryImageViewProtocol {
 		}
 	}
 
+	override func encodeRestorableState(with coder: NSCoder) {
+		presenter?.encodeState(coder: coder)
+	}
+
 	private func layout() {
 		view.addSubview(imageView)
 		NSLayoutConstraint.activate(view.constraintsAligning(subView: imageView,
