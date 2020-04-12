@@ -17,8 +17,10 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 
 	var router: TopEntriesListRouterProtocol?
 	var interactor: TopEntriesListInteractorProtocol?
-	var state: TopEntriesListViewState = .loading
+	private(set) var cellData: [TopEntriesListCellType] = [.loading]
 	weak var view: TopEntriesListViewControllerProtocol?
+
+	private var pageNumber = 0
 
 	var headerButtonTitle: String? {
 		return Constants.DismissAllTitle
@@ -33,45 +35,52 @@ final class TopEntriesListPresenter: TopEntriesListPresenterProtocol {
 	}
 
 	func setError(message: String? = nil) {
-		state = .error(message: message ?? Constants.ErrorMessage)
+		cellData = [.error(message: message ?? Constants.ErrorMessage)]
 		view?.reload()
 	}
 
 	func loadEntries(entries: [EntryCellModel]) {
-		state = .entries(data: entries)
+		pageNumber += 1
+		let newCellData = entries.map { TopEntriesListCellType.entry(data: $0) }
+		if let lastCell = cellData.last, case .loading = lastCell {
+			cellData.removeLast()
+		}
+		cellData.append(contentsOf: newCellData)
+		cellData.append(.loading)
 		view?.reload()
 	}
 
-	func loadData() {
-		state = .loading
-		interactor?.getPosts()
-	}
-
 	func entryButtonPressed(index: Int) {
-		guard case .entries(var data) = state, index < data.count, index >= 0 else { return }
-
-		data.remove(at: index)
-		state = .entries(data: data)
+		if cellData[index].canBeDismissed {
+			cellData.remove(at: index)
+			view?.delete(index: index)
+		}
 	}
 
 	func headerButtonPressed() {
-		guard case .entries = state else { return }
-		// TODO: There's an interesting error that happens when there is no values for the UITableView.
-		//	Adding an empty state cell would fix that error.
-		state = .entries(data: [])
+		cellData = cellData.filter { !$0.canBeDismissed }
 		view?.reload()
 	}
 
 	func rowSelected(index: Int) {
-		guard case .entries(var data) = state else { return }
-		var entry = data[index]
-		entry.read = true
-		data[index] = entry
-		state = .entries(data: data)
-		view?.reload(index: index)
+		guard case .entry(var data) = cellData[index] else { return }
+		data.read = true
+		cellData[index] = .entry(data: data)
 	}
 
-	func refreshData() {
-		interactor?.getPosts()
+	func refresh() {
+		pageNumber = 0
+		interactor?.getPosts(refresh: true)
+	}
+
+	func nextPage() {
+		if pageNumber < 5 {
+			interactor?.getPosts(refresh: false)
+		} else {
+			if let lastCell = cellData.last, case .loading = lastCell {
+				cellData.removeLast()
+				view?.delete(index: cellData.count)
+			}
+		}
 	}
 }

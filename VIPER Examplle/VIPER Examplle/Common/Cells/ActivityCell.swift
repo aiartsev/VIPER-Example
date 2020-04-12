@@ -19,8 +19,6 @@ final class ActivityCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
 		layout()
-
-		activityIndicator.startAnimating()
 	}
 
 	required init?(coder: NSCoder) {
@@ -29,9 +27,10 @@ final class ActivityCell: UITableViewCell {
 
 	private func layout() {
 		contentView.addSubview(activityIndicator)
+		NSLayoutConstraint.activate(contentView.constraintsAligning(subView: activityIndicator, vertically: .fill(inset: .zero), horizontally: .fill(inset: .zero)))
+	}
 
-		NSLayoutConstraint.activate(contentView.constraintsAligning(subView: activityIndicator,
-														vertically: .center(offset: 0),
-														horizontally: .center(offset: 0)))
+	func startAnimating() {
+		activityIndicator.startAnimating()
 	}
 }

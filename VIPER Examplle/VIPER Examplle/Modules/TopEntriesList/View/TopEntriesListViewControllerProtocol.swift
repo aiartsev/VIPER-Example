@@ -13,4 +13,5 @@ protocol TopEntriesListViewControllerProtocol: class {
 
 	func reload()
 	func reload(index: Int)
+	func delete(index: Int)
 }

@@ -36,7 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B3FD98F243FB742002C4FF6 /* VIPER Examplle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER Examplle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B3FD98F243FB742002C4FF6 /* VIPER Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3FD992243FB742002C4FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B3FD99B243FB745002C4FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3FD99E243FB745002C4FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		1B3FD990243FB742002C4FF6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B3FD98F243FB742002C4FF6 /* VIPER Examplle.app */,
+				1B3FD98F243FB742002C4FF6 /* VIPER Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 			);
 			name = "VIPER Examplle";
 			productName = "VIPER Examplle";
-			productReference = 1B3FD98F243FB742002C4FF6 /* VIPER Examplle.app */;
+			productReference = 1B3FD98F243FB742002C4FF6 /* VIPER Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -466,8 +466,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Examplle";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Example";
+				PRODUCT_NAME = "VIPER Example";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -483,8 +483,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Examplle";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "aiartsev.VIPER-Example";
+				PRODUCT_NAME = "VIPER Example";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

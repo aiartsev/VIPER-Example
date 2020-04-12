@@ -11,21 +11,30 @@ protocol TopEntriesListPresenterProtocol: class {
 	var interactor: TopEntriesListInteractorProtocol? { get set }
 	var view: TopEntriesListViewControllerProtocol? { get set }
 
-	var state: TopEntriesListViewState { get }
+	var cellData: [TopEntriesListCellType] { get }
 	var headerButtonTitle: String? { get }
 
-	func loadData()
 	func entryButtonPressed(index: Int)
 	func headerButtonPressed()
 	func rowSelected(index: Int)
-	func refreshData()
+	func nextPage()
+	func refresh()
 
 	func setError(message: String?)
 	func loadEntries(entries: [EntryCellModel])
 }
 
-enum TopEntriesListViewState {
+enum TopEntriesListCellType {
 	case loading
 	case error(message: String?)
-	case entries(data: [EntryCellModel])
+	case entry(data: EntryCellModel)
+
+	var canBeDismissed: Bool {
+		switch self {
+		case .entry:
+			return true
+		default:
+			return false
+		}
+	}
 }

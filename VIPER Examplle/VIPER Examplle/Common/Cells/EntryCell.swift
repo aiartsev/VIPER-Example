@@ -87,11 +87,18 @@ final class EntryCell: UITableViewCell {
 			commentsLabel.text = model?.comments
 			readLabel.text = model?.status
 
-			if let thumbnail = model?.thumbnail {
+			guard let model = model else {
+				thumbnailImageView.isHidden = false
+				thumbnailImageView.image = nil
+				return
+			}
+
+			if let thumbnail = model.thumbnail {
 				thumbnailImageView.isHidden = false
 				thumbnailImageView.load(fromURL: thumbnail)
 			} else {
 				thumbnailImageView.isHidden = true
+				thumbnailImageView.image = nil
 			}
 		}
 	}
